@@ -61,8 +61,8 @@ vec3 rgb_to_hsv(vec3 rgb){
 
 vec2 dither(vec2 coord, vec2 color){
 	// get matrix position
-	int x = int(mod(coord.x, 8.0));
-	int y = int(mod(coord.y, 8.0));
+	int x = int(mod(coord.x, 16.0)/2.0);
+	int y = int(mod(coord.y, 16.0)/2.0);
 	int index = x + 8*y;
 	float limit = (float(dither_table[index]) + 1.0) / 64.;
 	
