@@ -15,14 +15,14 @@ Screenshots were taken using 6-level quantization.
 You may want to set a higher color count to make it less noticable, or the opposite.
 
 ### o8dither.glsl
-<p align="center"><img src="true_sxiv.png"></p>
-<p align="center"><img src="true_q3a.png"></p>
+![true_sxiv.png](true_sxiv.png)
+![true_q3a.png](true_q3a.png)
 
 ### fakeDither.glsl
-<p align="center"><img src="fake_sxiv.png"></p>
-<p align="center"><img src="fake_q3a.png"></p>
+![fake_sxiv.png](fake_sxiv.png)
+![fake_q3a.png](fake_q3a.png)
 
 This video demonstrates two shaders with fading:
 
 ### halfFakeDither+Fade.glsl fadeDither4x2.glsl
-<p align="center"><video controls><source src="fade_demo.mkv"></source></video></p>
+![fade_demo.mkv](fade_demo.mkv)
