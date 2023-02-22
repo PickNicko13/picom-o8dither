@@ -4,7 +4,7 @@
 // author: PickNicko13
 // license: GPLv3
 
-#version 130
+#version 330
 #ifdef GL_ES
 	precision highp float;
 #endif
@@ -27,6 +27,7 @@ const int[64] dither_table = int[](
 );
 
 // Uniforms
+in vec2 texcoord;
 uniform float opacity;
 uniform bool invert_color;
 uniform sampler2D tex;
@@ -77,13 +78,13 @@ vec2 dither(vec2 coord, vec2 color){
 	return color/colors;
 }
 
-void main(){
-	vec4 color = texture2D(tex, gl_TexCoord[0].st);
+vec4 window_shader(){
+	vec4 color = texelFetch(tex, ivec2(texcoord), 0)*opacity;
 
 	color.xyz = rgb_to_hsv(color.rgb);
 	if (invert_color)
 		color.z = 1.0 - color.z;
-	color.yz = dither(gl_FragCoord.xy, color.gb);
+	color.yz = dither(texcoord, color.gb);
 
-	gl_FragColor = vec4(hsv_to_rgb(color.rgb), color.a*opacity);
+	return vec4(hsv_to_rgb(color.rgb), color.a);
 }
